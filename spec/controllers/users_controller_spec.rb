@@ -9,8 +9,8 @@ RSpec.describe UsersController, type: :controller do
 		end
 
 		it "returns the information about user on a hash" do 
-			user_response = JSON.parse(response.body)
-			expect(user_response['data']['attributes']['email']).to eql @user.email
+			user_response = json_response
+			expect(user_response[:data][:attributes][:email]).to eql @user.email
 			expect(response.status).to eq(200)
 		end
 	end
@@ -23,8 +23,8 @@ RSpec.describe UsersController, type: :controller do
 			end
 
 			it "renders the json message for the user just created" do
-				user_response = JSON.parse(response.body)
-				expect(user_response['data']['attributes']['email']).to eql @user[:email]
+				user_response = json_response
+				expect(user_response[:data][:attributes][:email]).to eql @user[:email]
 				expect(response.status).to eq(201)
 			end
 		end
@@ -42,7 +42,7 @@ RSpec.describe UsersController, type: :controller do
 			end
 
 			it "renders the json errors messages when blank" do
-				user_response = JSON.parse(response.body, symbolize_names: true)
+				user_response = json_response
 				expect(user_response[:errors][:email]).to include "can't be blank"
 			end
 		end
@@ -57,8 +57,8 @@ RSpec.describe UsersController, type: :controller do
 			end
 
 			it "renders the json message for the user just updated" do
-				user_response = JSON.parse(response.body)
-				expect(user_response['data']['attributes']['email']).to eql "newuser@example.com"
+				user_response = json_response
+				expect(user_response[:data][:attributes][:email]).to eql "newuser@example.com"
 				expect(response.status).to eq(200)
 			end
 		end
@@ -76,7 +76,7 @@ RSpec.describe UsersController, type: :controller do
 			end
 
 			it "renders the json errors messages when blank" do
-				user_response = JSON.parse(response.body, symbolize_names: true)
+				user_response = json_response
 				expect(user_response[:errors][:email]).to include "is invalid"
 			end
 		end
