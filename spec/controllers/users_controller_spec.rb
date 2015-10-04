@@ -47,4 +47,38 @@ RSpec.describe UsersController, type: :controller do
 			end
 		end
 	end
+
+	describe "PUT/PATCH #update" do
+
+		context "when update is successful" do
+			before do
+				@user = User.create(id: 1 , email: "user@example.com")
+				patch :update, { id: @user.id, user: {email: "newuser@example.com"}}
+			end
+
+			it "renders the json message for the user just updated" do
+				user_response = JSON.parse(response.body)
+				expect(user_response['data']['attributes']['email']).to eql "newuser@example.com"
+				expect(response.status).to eq(200)
+			end
+		end
+
+		context "when user is not updated" do
+			before do
+				@wrong_user_email = { email: "foo@example,com"}
+				post :create, { user: @wrong_user_email}
+			end
+
+			it "renders an errors json" do
+				user_response = JSON.parse(response.body, symbolize_names: true)
+				expect(user_response).to have_key(:errors)
+				expect(response.status).to eq(422)
+			end
+
+			it "renders the json errors messages when blank" do
+				user_response = JSON.parse(response.body, symbolize_names: true)
+				expect(user_response[:errors][:email]).to include "is invalid"
+			end
+		end
+	end
 end
