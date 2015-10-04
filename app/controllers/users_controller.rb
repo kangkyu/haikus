@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-	def serialize_model(model, options = {})
-		options[:is_collection] = false
-		JSONAPI::Serializer.serialize(model, options)
+	def index
+		users = User.all
+		render json: serialize_models(users)
 	end
 
 	def show
@@ -39,6 +39,16 @@ private
 
 	def user_params
 		params.require(:user).permit(:email)
+	end
+
+	def serialize_model(model, options = {})
+		options[:is_collection] = false
+		JSONAPI::Serializer.serialize(model, options)
+	end
+
+	def serialize_models(models, options = {})
+		options[:is_collection] = true
+		JSONAPI::Serializer.serialize(models, options)
 	end
 
 end

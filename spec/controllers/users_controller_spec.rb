@@ -2,6 +2,22 @@ require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
 
+	describe "GET #index" do
+		before do
+			@user1 = User.create(id: 1 , email: "user1@example.com")
+			@user2 = User.create(id: 2 , email: "user2@example.com")
+			get :index
+		end
+
+		it "returns the all user informations on a hash" do 
+			user_response = json_response
+			expect(user_response[:data][0][:attributes][:email]).to eql @user1.email
+			expect(user_response[:data][1][:attributes][:email]).to eql @user2.email
+			expect(response.status).to eq(200)
+		end
+	end
+
+
 	describe "GET #show" do
 		before do
 			@user = User.create(id: 1 , email: "user@example.com")
