@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
 
-	respond_to :json
+	def serialize_model(model, options = {})
+		options[:is_collection] = false
+		JSONAPI::Serializer.serialize(model, options)
+	end
 
 	def show
-		respond_with User.find(params[:id])
+		user =  User.find(params[:id])
+		render json: serialize_model(user)
 	end
+
 end

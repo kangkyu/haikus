@@ -88,6 +88,8 @@ GEM
     hashie (3.4.2)
     i18n (0.7.0)
     json (1.8.3)
+    jsonapi-serializers (0.3.0)
+      activesupport
     jwt (1.5.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -208,6 +210,7 @@ DEPENDENCIES
   capistrano-rvm
   factory_girl_rails
   figaro
+  jsonapi-serializers
   omniauth-github!
   pg
   rails (= 4.2.4)
