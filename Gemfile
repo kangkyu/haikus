@@ -16,6 +16,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'sqlite3'
   gem 'simplecov', :require => false
+
+  gem 'responders', '~> 2.0'
 end
 
 group :production do
