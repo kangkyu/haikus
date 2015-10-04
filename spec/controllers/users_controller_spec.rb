@@ -81,4 +81,16 @@ RSpec.describe UsersController, type: :controller do
 			end
 		end
 	end
+
+	describe "Delete #destroy" do
+
+		before do
+			@user = User.create(id: 1 , email: "user@example.com")
+			delete :destroy, { id: @user.id}
+		end
+		
+		it "renders the 204 status rsponse" do
+			expect(response.status).to eq(204)
+		end
+	end	
 end
