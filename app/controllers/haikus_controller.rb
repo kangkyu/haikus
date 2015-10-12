@@ -13,20 +13,18 @@ class HaikusController < ApplicationController
   def create
     haiku = Haiku.new(haiku_params)
     if haiku.save
-      render json: haiku
-      head 201
+      render json: haiku.lines, status: 201
     else
-      render json: {errors: haiku.errors}
+      render json: '400', status: 400
     end
   end
 
   def update
     haiku = Haiku.find(params[:id])
-    if haiku.update_attributes(haiku_params)
-      render json: haiku
+    if haiku.lines.first.update_attributes(line_params)
+      render json: haiku.lines
     else
-      render json: {errors: haiku.errors}
-      head 400
+      render json: '400', status: 400
     end
   end
 
@@ -39,7 +37,11 @@ class HaikusController < ApplicationController
   private
 
   def haiku_params
-    params.permit()
+    params.permit(lines_attributes: [:haiku_id, :content])
   end
 
+  def line_params
+    params.permit(:haiku_id, :content)
+  end
+  
 end
