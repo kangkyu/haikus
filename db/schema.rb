@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929205233) do
+ActiveRecord::Schema.define(version: 20151012015539) do
 
   create_table "haikus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150929205233) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "lines", ["haiku_id"], name: "index_lines_on_haiku_id"
 
   create_table "sessions", force: :cascade do |t|
     t.string   "oauth_token"

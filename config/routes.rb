@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   delete '/sessions/:id' => 'sessions#destroy'
   resources :tags, only: [:create, :update, :destroy], constraints: {format: :json}
-  resources :haikus, constraints: {format: :json}
+  resources :haikus, constraints: {format: :json} do
+    resources :lines, only: [:index, :create, :update, :show, :destroy], constraints: {format: :json}
+  end
+  resources :tags, only: [:create, :update, :destroy], constraints: {format: :json} 
 
   root to: 'haikus#index'
 end
