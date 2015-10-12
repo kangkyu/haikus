@@ -12,3 +12,5 @@
 # Ignore application configuration
 /config/application.yml
 
+#Ignore coveralls yaml file
+/.coveralls.yml

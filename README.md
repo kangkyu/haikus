@@ -1,3 +1,8 @@
+[![Dependency Status](https://gemnasium.com/rlcheng/haikus.svg)](https://gemnasium.com/rlcheng/haikus)
+[![Build Status](https://travis-ci.org/rlcheng/haikus.svg)](https://travis-ci.org/rlcheng/haikus)
+[![Code Climate](https://codeclimate.com/github/rlcheng/haikus/badges/gpa.svg)](https://codeclimate.com/github/rlcheng/haikus)
+[![Coverage Status](https://coveralls.io/repos/rlcheng/haikus/badge.svg?branch=master&service=github)](https://coveralls.io/github/rlcheng/haikus?branch=master)
+
 ###Pull Requests, Merging, and PivotalTracker
 "Start" a ticket on PivotalTracker and add yourself as an owner
 
