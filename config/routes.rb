@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :lines, only: [:index, :create, :update, :show, :destroy], constraints: {format: :json}
   end
   resources :tags, only: [:create, :update, :destroy], constraints: {format: :json} 
+  resources :users, only: [:index, :create, :update, :show, :destroy], constraints: {format: :json}
 
   root to: 'haikus#index'
 end
