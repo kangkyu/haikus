@@ -1,0 +1,3 @@
+class RandomHaiku < Haiku
+
+end
