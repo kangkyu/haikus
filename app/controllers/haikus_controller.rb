@@ -1,10 +1,16 @@
 class HaikusController < ApplicationController
 
   def index
-    haikus = Haiku.all
     respond_to do |format|
-      format.json { render json: haikus }
-      format.html { render component: "Haikus", props: { data: haikus.as_json } }
+      format.json do
+        haikus = Haiku.all
+        render json: haikus
+      end
+      format.html do
+        haikus = Haiku.page(params[:page]).per(3)
+        render component: "Haikus",
+               props: { data: haikus.as_json }
+      end
     end
   end
 

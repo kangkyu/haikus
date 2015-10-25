@@ -9,6 +9,7 @@ gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'figaro'
 
 gem 'react-rails', '~> 1.4.0'
+gem 'kaminari', '~> 0.16.3'
 
 group :development, :test do
   gem 'spring'  
