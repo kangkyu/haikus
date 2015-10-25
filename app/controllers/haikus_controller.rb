@@ -7,7 +7,7 @@ class HaikusController < ApplicationController
         render json: haikus
       end
       format.html do
-        haikus = Haiku.page(params[:page]).per(3)
+        haikus = Haiku.page(params[:page]).per(10)
         render component: "Haikus",
                props: { data: haikus.as_json }
       end
