@@ -8,6 +8,8 @@ gem "active_model_serializers", github: "rails-api/active_model_serializers"
 gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'figaro'
 
+gem 'react-rails', '~> 1.4.0'
+
 group :development, :test do
   gem 'spring'  
   gem 'byebug'
