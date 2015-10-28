@@ -10,6 +10,10 @@ class HaikusController < ApplicationController
     render json: haiku
   end
 
+  def new
+    @haiku = Haiku.new
+  end
+
   def create
     haiku = Haiku.new(haiku_params)
     if haiku.save
