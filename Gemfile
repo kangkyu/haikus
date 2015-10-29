@@ -8,6 +8,9 @@ gem "active_model_serializers", github: "rails-api/active_model_serializers"
 gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'figaro'
 
+gem 'jquery'
+gem 'turbolinks'
+
 group :development, :test do
   gem 'spring'  
   gem 'byebug'
@@ -25,4 +28,3 @@ group :production do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
 end
-
