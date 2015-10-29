@@ -8,7 +8,7 @@ gem "active_model_serializers", github: "rails-api/active_model_serializers"
 gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'figaro'
 
-gem 'jquery'
+gem 'jquery-rails'
 gem 'turbolinks'
 
 group :development, :test do

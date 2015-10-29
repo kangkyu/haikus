@@ -1,8 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
 <div class="container">
   <h1><%= "Haikus Landing" %></h1>
   <div id="content"></div>
+</div>
 
-  <script type="text/babel">
+
+<script type="text/babel">
+
+var Haiku = React.createClass({
+  render: function() {
+    return (
+      <div>{ this.props.id_number }</div>
+    );
+  }
+ });
 
 var Haikus = React.createClass({
   getInitialState: function() {
@@ -15,7 +34,7 @@ var Haikus = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({data: data});
+        this.setState({data: data.data});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -23,9 +42,9 @@ var Haikus = React.createClass({
     });
   },
   render: function() {
-    var haikuListing = this.states.data.map(function(haiku) {
+    var haikuListing = this.state.data.map(function(haiku) {
       return (
-        <li><Haiku id_number={haiku.id} /></li>
+        <li key={ haiku.id }><Haiku id_number={ haiku.id } /></li>
       );
     });
     return (
@@ -41,6 +60,7 @@ ReactDOM.render(
   <Haikus url="/haikus" />,
   document.getElementById('content')
 );
-  </script>
+</script>
 
-</div>
+</body>
+</html>
