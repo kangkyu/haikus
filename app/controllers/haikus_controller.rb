@@ -1,5 +1,8 @@
 class HaikusController < ApplicationController
 
+  def landing
+  end
+
   def index
     haikus = Haiku.all
     render json: haikus

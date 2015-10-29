@@ -1,0 +1,46 @@
+<div class="container">
+  <h1><%= "Haikus Landing" %></h1>
+  <div id="content"></div>
+
+  <script type="text/babel">
+
+var Haikus = React.createClass({
+  getInitialState: function() {
+    return {data: []};
+  },
+  // tutorial13.js
+  componentDidMount: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  render: function() {
+    var haikuListing = this.states.data.map(function(haiku) {
+      return (
+        <li><Haiku id_number={haiku.id} /></li>
+      );
+    });
+    return (
+      <div>
+        <h1>Haikus</h1>
+        <ul>{ haikuListing }</ul>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <Haikus url="/haikus" />,
+  document.getElementById('content')
+);
+  </script>
+
+</div>
