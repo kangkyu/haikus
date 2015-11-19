@@ -12,5 +12,8 @@
 # Ignore application configuration
 /config/application.yml
 
-#Ignore coveralls yaml file
+# Ignore coveralls yaml file
 /.coveralls.yml
+
+node_modules/
+vendor/
